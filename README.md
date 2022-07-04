@@ -1,4 +1,4 @@
-# Auto Assign Action
+# Auto Assign Bot
 
 An action which adds reviewers to the pull request when the pull request is opened.
 
@@ -16,7 +16,7 @@ jobs:
   add-reviews:
     runs-on: ubuntu-latest
     steps:
-      - uses: kentaro-m/auto-assign-action@v1.2.1
+      - uses: dawn0114/auto-assign-bot@v1.3.0
         with:
           configuration-path: '.github/some_name_for_configs.yml' # Only needed if you use something other than .github/auto_assign.yml
 ```

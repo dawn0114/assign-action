@@ -1,6 +1,6 @@
-name: 'Auto Assign Action'
+name: 'Auto Assign Bot'
 description: 'Add reviewers to pull requests when pull requests are opened.'
-author: 'Kentaro Matsushita'
+author: 'Dawn Lee'
 inputs:
   repo-token:
     description: 'A token for the repo'
@@ -14,4 +14,4 @@ runs:
   main: 'dist/index.js'
 branding:
   icon: 'user-plus'
-  color: 'blue'
+  color: 'green'

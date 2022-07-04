@@ -18,6 +18,7 @@ export interface Config {
   numberOfReviewers: number
   skipKeywords: string[]
   useReviewGroups: boolean
+  useAllReviewGroupsLabels?: string[]
   useAssigneeGroups: boolean
   reviewGroups: { [key: string]: string[] }
   assigneeGroups: { [key: string]: string[] }
@@ -45,6 +46,7 @@ export async function handlePullRequest(
     addAssignees,
     filterLabels,
     runOnDraft,
+    useAllReviewGroupsLabels,
   } = config
 
   if (skipKeywords && utils.includesSkipKeywords(title, skipKeywords)) {
@@ -99,7 +101,19 @@ export async function handlePullRequest(
 
   if (addReviewers) {
     try {
-      const reviewers = utils.chooseReviewers(owner, config)
+      let useAllReviewGroups: Boolean = false
+
+      if (useAllReviewGroupsLabels !== undefined) {
+        if (useAllReviewGroupsLabels.length > 0) {
+          useAllReviewGroups = pr.hasAnyLabel(useAllReviewGroupsLabels)
+        }
+      }
+      const reviewers = utils.chooseReviewers(
+        owner,
+        useAllReviewGroups,
+        config,
+        pr.getLabels()
+      )
 
       if (reviewers.length > 0) {
         await pr.addReviewers(reviewers)
