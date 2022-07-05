@@ -1,4 +1,4 @@
-name: 'Auto Assign Bot'
+name: 'Assign Action'
 description: 'Add reviewers to pull requests when pull requests are opened.'
 author: 'Dawn Lee'
 inputs:
