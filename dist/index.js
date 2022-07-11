@@ -36160,7 +36160,7 @@ class PullRequest {
         }
         const labels = this.context.payload.pull_request.labels;
         for (const label of labels) {
-            core.info(`pr util ${label.name}`);
+            core.info(`pr label name : ${label.name}`);
             labelStringArray.push(label.name);
         }
         return labelStringArray;
@@ -36342,7 +36342,7 @@ function chooseUsersFromGroups(owner, groups, desiredNumber, useAllGroups, label
         }
         else {
             for (const label of labels) {
-                if ((groups.keys || []).includes(label)) {
+                if (Object.keys(groups).includes(label)) {
                     users = users.concat(chooseUsers(groups[label], desiredNumber, owner));
                 }
             }

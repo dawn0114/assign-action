@@ -57,7 +57,7 @@ export class PullRequest {
     }
     const labels: Label[] = this.context.payload.pull_request.labels
     for (const label of labels) {
-      core.info(`pr util ${label.name}`)
+      core.info(`pr label name : ${label.name}`)
       labelStringArray.push(label.name)
     }
     return labelStringArray
