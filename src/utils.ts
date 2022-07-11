@@ -117,7 +117,9 @@ export function chooseUsersFromGroups(
       }
     } else {
       for (const label of labels) {
-        users = users.concat(chooseUsers(groups[label], desiredNumber, owner))
+        if (groups.keys.includes(label)) {
+          users = users.concat(chooseUsers(groups[label], desiredNumber, owner))
+        }
       }
     }
   }
