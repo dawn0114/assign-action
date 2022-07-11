@@ -117,7 +117,7 @@ export function chooseUsersFromGroups(
       }
     } else {
       for (const label of labels) {
-        if (groups.keys.includes(label)) {
+        if (groups.keys.indexOf(label) > -1) {
           users = users.concat(chooseUsers(groups[label], desiredNumber, owner))
         }
       }
